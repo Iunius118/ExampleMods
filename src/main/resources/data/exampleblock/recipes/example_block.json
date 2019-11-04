@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "CeC",
+    " C "
+  ],
+  "key": {
+    "e": {
+      "item": "exampleitem:example_item"
+    },
+    "C": {
+      "tag": "forge:cobblestone"
+    }
+  },
+  "result": {
+    "item": "exampleblock:example_block"
+  }
+}
