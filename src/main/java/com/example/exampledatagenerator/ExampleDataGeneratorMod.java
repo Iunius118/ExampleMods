@@ -17,7 +17,7 @@ public class ExampleDataGeneratorMod {
     public static class ModEventHandler {
         // runData実行時のみ発生するデータ生成用のイベント
         @SubscribeEvent
-        public static void gatherData(GatherDataEvent event) {
+        public static void gatherData(final GatherDataEvent event) {
             DataGenerator generator = event.getGenerator();
 
             if (event.includeServer()) {
@@ -25,7 +25,7 @@ public class ExampleDataGeneratorMod {
             }
 
             if (event.includeClient()) {
-
+                // 今後こちらにはクライアント用のモデル関連やlangのProviderが追加される予定
             }
         }
     }
