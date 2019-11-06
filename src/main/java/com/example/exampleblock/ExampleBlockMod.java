@@ -27,7 +27,6 @@ public class ExampleBlockMod {
 
     private void setup(final FMLCommonSetupEvent event) {
         // サーバー・クライアント共通の初期化処理
-        LOGGER.info("HELLO FROM SETUP");
         // ブロックが登録されているか確認
         LOGGER.info("EXAMPLE BLOCK >> {}", ExampleBlocks.EXAMPLE_BLOCK.getRegistryName());
     }

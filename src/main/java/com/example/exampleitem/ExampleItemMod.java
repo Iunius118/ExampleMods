@@ -23,7 +23,6 @@ public class ExampleItemMod {
 
     private void setup(final FMLCommonSetupEvent event) {
         // サーバー・クライアント共通の初期化処理
-        LOGGER.info("HELLO FROM SETUP");
         // アイテムが登録されているか確認
         LOGGER.info("EXAMPLE ITEM >> {}", ExampleItems.EXAMPLE_ITEM.getRegistryName());
     }
