@@ -19,6 +19,9 @@ public class ExampleTileEntity extends TileEntity {
         this(ExampleTileEntityMod.ExampleTileEntityTypes.EXAMPLE_TE);
     }
 
+    /*
+     * とりあえずタイルエンティティーに適当な仕事を与える
+     * */
     public void countUp() {
         count++;
     }
@@ -44,9 +47,9 @@ public class ExampleTileEntity extends TileEntity {
     }
 
     /*
-    * パケットの送信・受信処理
-    * サーバー側のデータをクライアント側に反映させる
-    * */
+     * パケットの送信・受信処理
+     * サーバー側のデータをクライアント側に反映させる
+     * */
     @Nullable
     @Override
     public SUpdateTileEntityPacket getUpdatePacket() {
