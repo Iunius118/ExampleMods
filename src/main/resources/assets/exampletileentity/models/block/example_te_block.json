@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "exampletileentity:block/example_te_block"
+    }
+}
