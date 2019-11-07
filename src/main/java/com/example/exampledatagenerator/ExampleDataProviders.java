@@ -2,6 +2,7 @@ package com.example.exampledatagenerator;
 
 import com.example.exampleblock.ExampleBlockMod;
 import com.example.exampleitem.ExampleItemMod;
+import com.example.exampletileentity.ExampleTileEntityMod;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
@@ -48,6 +49,13 @@ public class ExampleDataProviders {
                     .key('C', Tags.Items.COBBLESTONE)   // Forgeの丸石タグ
                     .addCriterion("has_example_item", hasItem(ExampleItemMod.ExampleItems.EXAMPLE_ITEM))
                     .build(consumer, ExampleBlockMod.ExampleBlocks.EXAMPLE_BLOCK.getRegistryName());
+
+            // 不定形レシピ：→Example TE Block
+            ShapelessRecipeBuilder.shapelessRecipe(ExampleTileEntityMod.ExampleTileEntityBlocks.EXAMPLE_TE_BLOCK, 1)
+                    .addIngredient(ExampleBlockMod.ExampleBlocks.EXAMPLE_BLOCK)
+                    .addIngredient(ItemTags.BUTTONS)    // バニラのボタンタグ
+                    .addCriterion("has_example_block", hasItem(ExampleBlockMod.ExampleBlocks.EXAMPLE_BLOCK))
+                    .build(consumer, ExampleTileEntityMod.ExampleTileEntityBlocks.EXAMPLE_TE_BLOCK.getRegistryName());
 
             // 精錬レシピ（かまど）：土→ダイヤ
             CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(Blocks.DIRT), Items.DIAMOND, 1.0F, 200)
