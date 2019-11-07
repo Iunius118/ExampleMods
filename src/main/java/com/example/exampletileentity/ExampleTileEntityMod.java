@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ObjectHolder;
@@ -28,12 +29,19 @@ public class ExampleTileEntityMod {
 
     public ExampleTileEntityMod() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         // サーバー・クライアント共通の初期化処理
         // タイルエンティティーが登録されているか確認
         LOGGER.info("EXAMPLE TILE ENTITY >> {}", ExampleTileEntityTypes.EXAMPLE_TE.getRegistryName());
+    }
+
+    private void doClientStuff(final FMLClientSetupEvent event) {
+        // クライアント限定の初期化処理
+        // TileEntityにTileEntityRendererを登録
+        ExampleTileEntityRenderer.bindTileEntity();
     }
 
     // 登録したブロックのインスタンスが自動的に代入されるObjectHolder

@@ -53,11 +53,23 @@ public class ExampleTileEntity extends TileEntity {
     @Nullable
     @Override
     public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(getPos(), -1, serializeNBT());
+        return new SUpdateTileEntityPacket(getPos(), -1, getUpdateTag());
     }
 
     @Override
     public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
         handleUpdateTag(pkt.getNbtCompound());
+    }
+
+    @Override
+    public CompoundNBT getUpdateTag() {
+        CompoundNBT tag = new CompoundNBT();
+        write(tag);
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundNBT tag) {
+        read(tag);
     }
 }
