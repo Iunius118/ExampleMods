@@ -8,4 +8,4 @@ Example Mods which are compatible with Minecraft Forge 1.14.4-28.1.0 MDK
 - **exampledistexecutor**: プロキシシステム、`DistExecutor`を使用した物理サーバー／物理クライアント限定の処理
 - **exampleitem**: アイテムとアイテムグループ（クリエイティブタブ）の追加
 - **examplemod**: 基本サンプルMOD
-- **exampletileentity**: タイルエンティティーの追加
+- **exampletileentity**: タイルエンティティーとタイルエンティティーレンダラーの追加
