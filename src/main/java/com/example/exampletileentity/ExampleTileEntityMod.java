@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 public class ExampleTileEntityMod {
     public static final String MOD_ID = "exampletileentity";
     public static final String EXAMPLE_TE_BLOCK_ID = "example_te_block";
-    public static final String EXAMPLE_TE_NAME = "example_te";
+    public static final String EXAMPLE_TE_ID = "example_te";
 
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -77,7 +77,7 @@ public class ExampleTileEntityMod {
         @SubscribeEvent
         public static void registerTE(final RegistryEvent.Register<TileEntityType<?>> event) {
             LOGGER.info("REGISTER_TE");
-            event.getRegistry().register(TileEntityType.Builder.create((Supplier<TileEntity>) ExampleTileEntity::new, ExampleTileEntityBlocks.EXAMPLE_TE_BLOCK).build(null).setRegistryName(EXAMPLE_TE_NAME));
+            event.getRegistry().register(TileEntityType.Builder.create((Supplier<TileEntity>) ExampleTileEntity::new, ExampleTileEntityBlocks.EXAMPLE_TE_BLOCK).build(null).setRegistryName(EXAMPLE_TE_ID));
         }
     }
 }
