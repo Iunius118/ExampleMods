@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "examplefluid:example_fluid_bucket"
+    ]
+  },
+  "criteria": {
+    "has_example_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "exampleitem:example_item"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "examplefluid:example_fluid_bucket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_example_item",
+      "has_the_recipe"
+    ]
+  ]
+}

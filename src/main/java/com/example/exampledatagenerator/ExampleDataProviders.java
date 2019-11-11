@@ -1,6 +1,7 @@
 package com.example.exampledatagenerator;
 
 import com.example.exampleblock.ExampleBlockMod;
+import com.example.examplefluid.ExampleFluidMod;
 import com.example.exampleitem.ExampleItemMod;
 import com.example.exampletileentity.ExampleTileEntityMod;
 import net.minecraft.block.Blocks;
@@ -56,6 +57,20 @@ public class ExampleDataProviders {
                     .addIngredient(ItemTags.BUTTONS)    // バニラのボタンタグ
                     .addCriterion("has_example_block", hasItem(ExampleBlockMod.ExampleBlocks.EXAMPLE_BLOCK))
                     .build(consumer, ExampleTileEntityMod.ExampleTileEntityBlocks.EXAMPLE_TE_BLOCK.getRegistryName());
+
+            // 不定形レシピ：→Example Fluid Bucket
+            ShapelessRecipeBuilder.shapelessRecipe(ExampleFluidMod.ExampleFluidItems.EXAMPLE_FLUID_BUCKET, 1)
+                    .addIngredient(Items.WATER_BUCKET)
+                    .addIngredient(ExampleItemMod.ExampleItems.EXAMPLE_ITEM)
+                    .addCriterion("has_example_item", hasItem(ExampleItemMod.ExampleItems.EXAMPLE_ITEM))
+                    .build(consumer, ExampleFluidMod.ExampleFluidItems.EXAMPLE_FLUID_BUCKET.getRegistryName());
+
+            // 不定形レシピ：→Example Block
+            ShapelessRecipeBuilder.shapelessRecipe(ExampleBlockMod.ExampleBlocks.EXAMPLE_BLOCK, 1)
+                    .addIngredient(ExampleFluidMod.ExampleFluidItems.EXAMPLE_FLUID_BUCKET)
+                    .addIngredient(Tags.Items.COBBLESTONE)   // Forgeの丸石タグ
+                    .addCriterion("has_example_fluid_bucket", hasItem(ExampleFluidMod.ExampleFluidItems.EXAMPLE_FLUID_BUCKET))
+                    .build(consumer, ExampleFluidMod.MOD_ID + ":example_block_from_fluid_bucket");
 
             // 精錬レシピ（かまど）：土→ダイヤ
             CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(Blocks.DIRT), Items.DIAMOND, 1.0F, 200)

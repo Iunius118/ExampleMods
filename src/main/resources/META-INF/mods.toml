@@ -61,6 +61,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     modId="exampletileentity"
     displayName="Example Tile Entity"
 
+[[mods]]
+    modId="examplefluid"
+    displayName="Example Fluid"
+
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
     # the modid of the dependency
