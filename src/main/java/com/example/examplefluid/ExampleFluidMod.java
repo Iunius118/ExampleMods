@@ -41,6 +41,18 @@ public class ExampleFluidMod {
         LOGGER.info("EXAMPLE FLUID >> {}", ExampleFluids.EXAMPLE_FLUID.getRegistryName());
     }
 
+    // 登録したブロックのインスタンスが自動的に代入されるObjectHolder
+    @ObjectHolder(MOD_ID)
+    public static class ExampleFluidBlocks {
+        public static final FlowingFluidBlock EXAMPLE_FLUID_BLOCK = null;
+    }
+
+    // 登録したアイテムのインスタンスが自動的に代入されるObjectHolder
+    @ObjectHolder(MOD_ID)
+    public static class ExampleFluidItems {
+        public static final Item EXAMPLE_FLUID_BUCKET = null;
+    }
+
     // 登録した流体のインスタンスが自動的に代入されるObjectHolder
     @ObjectHolder(MOD_ID)
     public static class ExampleFluids {
@@ -48,21 +60,25 @@ public class ExampleFluidMod {
         public static final FlowingFluid EXAMPLE_FLUID_FLOWING = null;
     }
 
-    // 登録したブロックのインスタンスが自動的に代入されるObjectHolder
-    @ObjectHolder(MOD_ID)
-    public static class ExampleFluidBlocks {
-        public static final FlowingFluidBlock EXAMPLE_FLUID_BLOCK = null;
-    }
-
-    // 登録したブロックのインスタンスが自動的に代入されるObjectHolder
-    @ObjectHolder(MOD_ID)
-    public static class ExampleFluidItems {
-        public static final Item EXAMPLE_FLUID_BUCKET = null;
-    }
-
     // アイテムやブロックなどの登録を行うクラス
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+        // ブロック登録イベント
+        @SubscribeEvent
+        public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+            LOGGER.info("REGISTER_BLOCKS");
+            // 流体ブロックを登録
+            event.getRegistry().register(new FlowingFluidBlock(() -> ExampleFluids.EXAMPLE_FLUID, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()).setRegistryName(EXAMPLE_FLUID_BLOCK_ID));
+        }
+
+        // アイテム登録イベント
+        @SubscribeEvent
+        public static void registerItems(final RegistryEvent.Register<Item> event) {
+            LOGGER.info("REGISTER_ITEMS");
+            // 流体のバケツアイテムを登録
+            event.getRegistry().register(new BucketItem(() -> ExampleFluids.EXAMPLE_FLUID, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ExampleItemGroups.EXAMPLE)).setRegistryName(EXAMPLE_FLUID_BUCKET_ID));
+        }
+
         // 流体登録イベント
         @SubscribeEvent
         public static void registerFluids(final RegistryEvent.Register<Fluid> event) {
@@ -79,23 +95,6 @@ public class ExampleFluidMod {
                     new ForgeFlowingFluid.Source(example_fluid_properties).setRegistryName(EXAMPLE_FLUID_ID),
                     new ForgeFlowingFluid.Flowing(example_fluid_properties).setRegistryName(EXAMPLE_FLUID_FLOWING_ID)
             );
-        }
-
-        // ブロック登録イベント
-        @SubscribeEvent
-        public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-            LOGGER.info("REGISTER_BLOCKS");
-            // 流体ブロックを登録
-            event.getRegistry().register(new FlowingFluidBlock(() -> ExampleFluids.EXAMPLE_FLUID, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()).setRegistryName(EXAMPLE_FLUID_BLOCK_ID));
-        }
-
-        // アイテム登録イベント
-        @SubscribeEvent
-        public static void registerItems(final RegistryEvent.Register<Item> event) {
-            LOGGER.info("REGISTER_ITEMS");
-            // 流体のバケツアイテムを登録
-            // ItemGroup（クリエイティブタブ等に使用）には独自のExampleItemGroups.EXAMPLEを指定。バニラの「その他」を指定する場合はItemGroup.MISC
-            event.getRegistry().register(new BucketItem(() -> ExampleFluids.EXAMPLE_FLUID, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ExampleItemGroups.EXAMPLE)).setRegistryName(EXAMPLE_FLUID_BUCKET_ID));
         }
     }
 }
