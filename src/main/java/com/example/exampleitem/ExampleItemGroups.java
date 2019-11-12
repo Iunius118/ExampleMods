@@ -10,6 +10,7 @@ public class ExampleItemGroups {
         @Override
         @OnlyIn(Dist.CLIENT)
         public ItemStack createIcon() {
+            // クリエイティブタブのアイコンに使用されるアイテムを返す
             return new ItemStack(ExampleItemMod.ExampleItems.EXAMPLE_ITEM);
         }
     };

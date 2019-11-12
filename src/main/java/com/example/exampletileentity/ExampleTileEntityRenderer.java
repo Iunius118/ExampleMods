@@ -22,8 +22,8 @@ public class ExampleTileEntityRenderer extends TileEntityRenderer<ExampleTileEnt
         }
     }
 
-    // 簡略化のためここでレンダラーを登録（実際にはproxy等でやった方がいいかも）
     public static void bindTileEntity() {
+        // 簡略化のためここでレンダラーをタイルエンティティーに登録（実際にはproxy等でやった方がいいかも）
         ClientRegistry.bindTileEntitySpecialRenderer(ExampleTileEntity.class, new ExampleTileEntityRenderer());
     }
 }

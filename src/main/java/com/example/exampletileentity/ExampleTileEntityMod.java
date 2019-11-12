@@ -41,6 +41,8 @@ public class ExampleTileEntityMod {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // クライアント限定の初期化処理
         // TileEntityにTileEntityRendererを登録
+        // ・クライアント限定の処理なのでサーバー側からは見えないところで行う
+        // ・ここでは簡略化のためレンダラークラスのメソッドで登録しているが、実際にはproxy等でやった方がいいかも
         ExampleTileEntityRenderer.bindTileEntity();
     }
 

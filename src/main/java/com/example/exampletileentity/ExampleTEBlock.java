@@ -31,7 +31,7 @@ public class ExampleTEBlock extends ContainerBlock {
             // プレイヤーにブロックが設置されてからクリックされた回数をメッセージで伝える
             int count = tile.getCount();
             player.sendMessage(new StringTextComponent("This block was clicked " + (count == 1 ? "once." : (count == 2 ? "twice." : count + " times."))));
-            // NBTをクライアントへ反映させるためにブロックのアップデートを通知
+            // NBTの更新をクライアント側へ反映させるためにブロックを更新（フラグに2を含めクライアント側へ通知する）
             worldIn.notifyBlockUpdate(pos, state, state, 2);
         }
 
