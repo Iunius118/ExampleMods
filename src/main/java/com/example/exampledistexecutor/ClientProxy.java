@@ -5,6 +5,6 @@ import com.example.exampledistexecutor.ServerProxy;
 public class ClientProxy extends ServerProxy {
     @Override
     public void setup() {
-        ExampleDistExecutorMod.LOGGER.info("Setup on client");
+        ExampleDistExecutorMod.LOGGER.info("SETUP ON CLIENT");
     }
 }

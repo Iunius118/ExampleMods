@@ -133,12 +133,12 @@ public class ExampleConfig {
     @SubscribeEvent
     public static void onLoad(final ModConfig.Loading event) {
         // Configファイルがロードされた
-        ExampleConfigMod.LOGGER.info("Loaded example config file {}", event.getConfig().getFileName());
+        ExampleConfigMod.LOGGER.info("LOADED CONFIG FILE: {}", event.getConfig().getFileName());
     }
 
     @SubscribeEvent
     public static void onFileChange(final ModConfig.ConfigReloading event) {
         // Configファイルが変更された
-        ExampleConfigMod.LOGGER.info("Changed example config file {}", event.getConfig().getFileName());
+        ExampleConfigMod.LOGGER.info("CHANGED CONFIG FILE: {}", event.getConfig().getFileName());
     }
 }

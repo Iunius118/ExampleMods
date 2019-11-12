@@ -63,6 +63,7 @@ public class ExampleTileEntity extends TileEntity {
 
     @Override
     public CompoundNBT getUpdateTag() {
+        ExampleTileEntityMod.LOGGER.info("SEND UPDATE TAG at {}", getPos());
         CompoundNBT tag = new CompoundNBT();
         write(tag);
         return tag;
@@ -70,6 +71,7 @@ public class ExampleTileEntity extends TileEntity {
 
     @Override
     public void handleUpdateTag(CompoundNBT tag) {
+        ExampleTileEntityMod.LOGGER.info("RECEIVED UPDATE TAG at {}", getPos());
         read(tag);
     }
 }
