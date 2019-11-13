@@ -55,7 +55,7 @@ public class ExampleTileEntityMod {
     // 登録したTileEntityTypeのインスタンスが自動的に代入されるObjectHolder
     @ObjectHolder(MOD_ID)
     public static class ExampleTileEntityTypes {
-        public static final TileEntityType<?> EXAMPLE_TE = null;
+        public static final TileEntityType<ExampleTileEntity> EXAMPLE_TE = null;
     }
 
     // アイテムやブロックなどの登録を行うクラス

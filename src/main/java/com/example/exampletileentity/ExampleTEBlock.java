@@ -23,16 +23,19 @@ public class ExampleTEBlock extends ContainerBlock {
     @SuppressWarnings("deprecation")
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         // ブロックを右クリックしたときの処理
-        ExampleTileEntity tile = (ExampleTileEntity) worldIn.getTileEntity(pos);
+        if (!worldIn.isRemote) {
+            TileEntity tileentity = worldIn.getTileEntity(pos);
 
-        if (tile != null & !worldIn.isRemote) {
-            // タイルエンティティーに記録されているクリックされた回数を更新
-            tile.countUp();
-            // プレイヤーにブロックが設置されてからクリックされた回数をメッセージで伝える
-            int count = tile.getCount();
-            player.sendMessage(new StringTextComponent("This block was clicked " + (count == 1 ? "once." : (count == 2 ? "twice." : count + " times."))));
-            // NBTの更新をクライアント側へ反映させるためにブロックを更新（フラグに2を含めクライアント側へ通知する）
-            worldIn.notifyBlockUpdate(pos, state, state, 2);
+            if (tileentity instanceof ExampleTileEntity) {
+                ExampleTileEntity exampleTileEntity = (ExampleTileEntity) tileentity;
+                // タイルエンティティーに記録されているクリックされた回数を更新
+                exampleTileEntity.countUp();
+                // プレイヤーにブロックが設置されてからクリックされた回数をメッセージで伝える
+                int count = exampleTileEntity.getCount();
+                player.sendMessage(new StringTextComponent("This block was clicked " + (count == 1 ? "once." : (count == 2 ? "twice." : count + " times."))));
+                // NBTの更新をクライアント側へ反映させるためにブロックを更新（フラグに2を含めクライアント側へ通知する）
+                worldIn.notifyBlockUpdate(pos, state, state, 2);
+            }
         }
 
         return true;
