@@ -3,6 +3,7 @@ package com.example.exampledatagenerator;
 import com.example.exampleblock.ExampleBlockMod;
 import com.example.examplefluid.ExampleFluidMod;
 import com.example.exampleitem.ExampleItemMod;
+import com.example.exampleitemcontainer.ExampleItemContainerMod;
 import com.example.exampletileentity.ExampleTileEntityMod;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
@@ -71,6 +72,16 @@ public class ExampleDataProviders {
                     .addIngredient(Tags.Items.COBBLESTONE)   // Forgeの丸石タグ
                     .addCriterion("has_example_fluid_bucket", hasItem(ExampleFluidMod.ExampleFluidItems.EXAMPLE_FLUID_BUCKET))
                     .build(consumer, ExampleFluidMod.MOD_ID + ":example_block_from_fluid_bucket");
+
+            // 定形レシピ：→Example Item Container Block
+            ShapedRecipeBuilder.shapedRecipe(ExampleItemContainerMod.ExampleItemContainerBlocks.EXAMPLE_ITEM_CONTAINER_BLOCK, 1)
+                    .patternLine("CeC")
+                    .patternLine("C C")
+                    .patternLine("CCC")
+                    .key('e', ExampleItemMod.ExampleItems.EXAMPLE_ITEM)
+                    .key('C', Tags.Items.COBBLESTONE)   // Forgeの丸石タグ
+                    .addCriterion("has_example_item", hasItem(ExampleItemMod.ExampleItems.EXAMPLE_ITEM))
+                    .build(consumer, ExampleItemContainerMod.ExampleItemContainerBlocks.EXAMPLE_ITEM_CONTAINER_BLOCK.getRegistryName());
 
             // 精錬レシピ（かまど）：土→ダイヤ
             CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(Blocks.DIRT), Items.DIAMOND, 1.0F, 200)
