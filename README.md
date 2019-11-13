@@ -8,5 +8,6 @@ Example Mods which are compatible with Minecraft Forge 1.14.4-28.1.0 MDK
 - **exampledistexecutor**: プロキシシステム（SidedProxy）、`DistExecutor`を使用した物理サーバー／物理クライアント限定の処理
 - **examplefluid**: 流体と流体ブロック、流体入りバケツの追加。バニラの水流と同じく流体がエンティティーを流せるようにするため、データパックでバニラの`FluidTags.WATER`タグに追加している。また今のところForgeのバケツモデル追加システムが未実装なため、流体入りバケツのアイテムモデルとテクスチャーは自前で用意している
 - **exampleitem**: アイテムとアイテムグループ（クリエイティブタブ）の追加
+- **exampleitemcontainer**: 1スロットのインベントリを持つブロックとGUIの追加
 - **examplemod**: 基本サンプルMOD
 - **exampletileentity**: タイルエンティティーとタイルエンティティーレンダラーの追加

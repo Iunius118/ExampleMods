@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "exampleitemcontainer:block/example_item_container_block" }
+    }
+}
