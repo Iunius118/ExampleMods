@@ -54,7 +54,7 @@ public class ExampleItemContainerMod {
         public static final TileEntityType<ExampleItemContainerTileEntity> EXAMPLE_ITEM_CONTAINER_TE = null;
     }
 
-    // 登録したTileEntityTypeのインスタンスが自動的に代入されるObjectHolder
+    // 登録したItemContainerTypeのインスタンスが自動的に代入されるObjectHolder
     @ObjectHolder(MOD_ID)
     public static class ExampleItemContainerTypes {
         public static final ContainerType<ExampleItemContainer> EXAMPLE_ITEM_CONTAINER_TYPE = null;
