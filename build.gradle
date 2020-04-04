@@ -79,7 +79,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            // --mod <modid>でJSONファイルを生成するmodのIDを指定する
+            // ジェネレーターがmodのリソースパック（main/resources/assets以下）のファイル（テクスチャ等）を参照する際には--existing <resourceDir>を忘れずに
+            args '--mod', 'exampledatagenerator', '--all', '--output', file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
 
             mods {
                 examplemod {
