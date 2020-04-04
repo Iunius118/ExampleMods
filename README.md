@@ -1,6 +1,6 @@
 # ExampleMods 1.14.4
 
-Example Mods which are compatible with Minecraft Forge 1.14.4-28.1.0 MDK
+Example Mods which are compatible with Minecraft Forge 1.14.4-28.2.0 MDK
 
 - **exampleblock**: ブロックの追加
 - **exampleconfig**: コンフィグの追加。コンフィグファイルはTOML形式で`config/exampleconfig-common.toml`及び`[world_dir]/serverconfig/exampleconfig-server.toml`、`config/exampleconfig-client.toml`（クライアント側のみ）に保存され、modのロード時とコンフィグファイルの変更時に読み込まれる
