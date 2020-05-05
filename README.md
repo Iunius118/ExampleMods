@@ -2,6 +2,8 @@
 
 Example Mods which are compatible with Minecraft Forge 1.14.4-28.2.0 MDK
 
+## Modリスト
+
 - **exampleblock**：ブロックの追加
 - **exampleconfig**：コンフィグの追加。コンフィグファイルはTOML形式で保存される。  
 コンフィグには以下の3タイプがある：
@@ -22,3 +24,13 @@ Example Mods which are compatible with Minecraft Forge 1.14.4-28.2.0 MDK
 - **exampleitemcontainer**：1スロットのインベントリを持つブロックとGUIの追加
 - **examplemod**：基本サンプルMOD
 - **exampletileentity**：タイルエンティティーとタイルエンティティーレンダラーの追加
+
+## 注記
+
+各modのmodイベント用の`@EventBusSubscriber`アノテーションで
+
+```java
+@Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+```
+
+と指定しているが、`modid = MOD_ID,`部分はこのExampleModsが複数のmodで構成されているために指定しているものであり、単一modのコアクラス（`@Mod`アノテーションを付けたクラス）で使用する場合は不要である（単一modでもコアクラス以外で使用する場合は必要）。

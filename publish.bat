@@ -1,2 +1,3 @@
-call gradlew clean build publish --info
+call gradlew clean
+call gradlew build publish --info
 pause
