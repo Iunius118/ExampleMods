@@ -20,6 +20,7 @@ public class ExampleConfig {
         public final ConfigValue<String> stringValue;
         public final ConfigValue<String> stringValueFromList;
         public final ConfigValue<List<Integer>> intList;
+        public final ConfigValue<List<String>> stringList;
 
         Common(ForgeConfigSpec.Builder builder) {
             builder.comment("Common settings")
@@ -59,6 +60,10 @@ public class ExampleConfig {
             intList = builder
                     .comment("A list of integer values")
                     .define("intList", Arrays.asList(1, 2, 4, 8, 16, 32, 64));
+
+            stringList = builder
+                    .comment("A list of String values")
+                    .define("stringList", Arrays.asList("Alice", "Bob", "Carol", "Dave"));
 
             builder.pop();  // ここまで[common.sub]内の項目
 
