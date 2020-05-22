@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,8 +24,9 @@ public class ExampleConfig {
         public final ConfigValue<List<String>> stringList;
 
         Common(ForgeConfigSpec.Builder builder) {
+            // 以下[common]内の項目
             builder.comment("Common settings")
-                    .push("common");    // 以下[common]内の項目
+                    .push("common");
 
             booleanValue = builder
                     .comment("A boolean value")
@@ -42,8 +44,9 @@ public class ExampleConfig {
                     .comment("A double value")
                     .defineInRange("doubleValue", 1.5, -100., 100.);
 
+            // 以下[common.sub]内の項目
             builder.comment("Sub configuration")
-                    .push("sub"); // 以下[common.sub]内の項目
+                    .push("sub");
 
             enumValue = builder
                     .comment("An enum value")
@@ -59,15 +62,17 @@ public class ExampleConfig {
 
             intList = builder
                     .comment("A list of integer values")
-                    .define("intList", Arrays.asList(1, 2, 4, 8, 16, 32, 64));
+                    .define("intList", new ArrayList<>(Arrays.asList(1, 2, 4, 8, 16, 32, 64))); // デフォルトのリストはArrayList型で渡す
 
             stringList = builder
                     .comment("A list of String values")
-                    .define("stringList", Arrays.asList("Alice", "Bob", "Carol", "Dave"));
+                    .define("stringList", new ArrayList<>(Arrays.asList("Alice", "Bob", "Carol", "Dave"))); // 同上
 
-            builder.pop();  // ここまで[common.sub]内の項目
+            // ここまで[common.sub]内の項目
+            builder.pop();
 
-            builder.pop();  // ここまで[common]内の項目
+            // ここまで[common]内の項目
+            builder.pop();
         }
 
         public enum Pet {
@@ -82,14 +87,16 @@ public class ExampleConfig {
         public final IntValue intValueInServer;
 
         Server(ForgeConfigSpec.Builder builder) {
+            // 以下[server]内の項目
             builder.comment("Server only settings")
-                    .push("server");    // 以下[server]内の項目
+                    .push("server");
 
             intValueInServer = builder
                     .comment("An integer value in server")
                     .defineInRange("intValueInServer", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
-            builder.pop();  // ここまで[server]内の項目
+            // ここまで[server]内の項目
+            builder.pop();
         }
     }
 
@@ -97,14 +104,16 @@ public class ExampleConfig {
         public final IntValue intValueInClient;
 
         Client(ForgeConfigSpec.Builder builder) {
+            // 以下[client]内の項目
             builder.comment("Client only settings")
-                    .push("client");    // 以下[client]内の項目
+                    .push("client");
 
             intValueInClient = builder
                     .comment("An integer value in client")
                     .defineInRange("intValueInClient", 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
-            builder.pop();  // ここまで[client]内の項目
+            // ここまで[client]内の項目
+            builder.pop();
         }
     }
 
